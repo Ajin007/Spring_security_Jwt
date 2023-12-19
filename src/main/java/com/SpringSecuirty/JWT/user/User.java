@@ -34,7 +34,7 @@ public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Integer id;
 	private String firstname;
 	private String lastname;
 	private String email;
