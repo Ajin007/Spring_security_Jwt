@@ -17,6 +17,9 @@ import lombok.RequiredArgsConstructor;
  * @component added so that the spring will add this 
  * @RequiredArgconstructor added so that any final private variable willbe creted with the constructor
  */
+/*
+ * To process the userEmail a seperate class will be created 
+ */
 
 @Component
 @RequiredArgsConstructor
@@ -30,7 +33,22 @@ public class JwtFilter extends OncePerRequestFilter {
 			@NonNull FilterChain filterChain)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		 final String jwt;
+		 
+			final String authheader= request.getHeader("Authorization");
+			if(authheader == null || !authheader.startsWith("Bearer ")) {
+				filterChain.doFilter(request, response);
+				return;
+			}
+			
+			//it will check for the bearer and space name so total that will take 7 spacing so only 7 is used
+			jwt=authheader.substring(7);
 		
 	}
-
+	
+	
+	
+	//now check for the bearer and null issue
+	
+	
 }
